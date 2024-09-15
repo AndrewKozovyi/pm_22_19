@@ -1,40 +1,33 @@
 import gulp from 'gulp';
-//import scss from 'gulp-scss';
 import cssnano from 'gulp-cssnano';
 import autoprefixer from 'gulp-autoprefixer';
 import imagemin from 'gulp-imagemin';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
-import browserSync from 'browser-sync'; // Add BrowserSync
-//import {rimraf} from 'rimraf'; // Add Rimraf
+import browserSync from 'browser-sync';
+import * as sass from 'sass';
+import gulpSass from 'gulp-sass';
 
-//import * as sassCompiler from 'scss';
-//const compileSass = scss(sassCompiler);
-
-//Use Rimraf to clean dist directory
-//gulp.task('clean', function (cb) {
-//    rimraf('dist', { glob: false }).then(() => cb()).catch(cb);});
-
+const sassCompiler = gulpSass(sass);
 
 gulp.task('html', function () {
     return gulp.src('app/*.html')
         .pipe(gulp.dest('dist'))
-        .pipe(browserSync.stream())
+        .pipe(browserSync.stream());
 });
 
 gulp.task('scss', function () {
     return gulp.src('app/scss/*.scss')
-        .pipe(concat('styles.scss'))
-        //.pipe(compileSass().on('error', compileSass.logError))
+        .pipe(sassCompiler().on('error', sassCompiler.logError))
         .pipe(autoprefixer({
-            //overrideBrowserslist: ['last 2 versions'],
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 2 versions'],
             cascade: false
         }))
         .pipe(cssnano())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('app/css'));
+        .pipe(gulp.dest('dist/css'))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('scripts', function () {
@@ -42,8 +35,8 @@ gulp.task('scripts', function () {
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('dist1/js'))
-        .pipe(browserSync.stream())
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('imgs', function () {
@@ -59,14 +52,13 @@ gulp.task('imgs', function () {
 gulp.task('watch', function () {
     browserSync.init({
         server: {
-            baseDir: 'app'
+            baseDir: 'dist'
         },
-    })
-    gulp.watch('app/*.html', gulp.series('html')).on('change',browserSync.reload);
+    });
+    gulp.watch('app/*.html', gulp.series('html')).on('change', browserSync.reload);
     gulp.watch('app/js/*.js', gulp.series('scripts'));
     gulp.watch('app/scss/*.scss', gulp.series('scss'));
     gulp.watch('app/img/*.+(jpg|jpeg|png|gif)', gulp.series('imgs'));
 });
 
-//+clean -> + ) in the end
-gulp.task('default',/*gulp.series('clean', */gulp.series( 'html', 'scss', 'scripts', 'imgs' , 'watch'));
+gulp.task('default', gulp.series('html', 'scss', 'scripts', 'imgs', 'watch'));
