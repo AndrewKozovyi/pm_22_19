@@ -1,5 +1,199 @@
-p.parag {
-    color: green;
-    font-weight: bold;
-    font-size: 160px;
+$primary-color: #ffcb2e;
+$secondary-color: #232323;
+$font-stack: 'Arial', sans-serif;
+$margin-spacing: 20px;
+
+body {
+    font-family: $font-stack;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+}
+
+.header{
+    margin-top: 3em;
+    width: 100%;
+    float: right;
+    .lorem{
+        margin: 0 2em 0 0;
+        width: 100%;
+        float: right;
+        p{
+            margin-top: 0;
+            text-align: justify;
+            margin-left: 39.70%;
+        }
+        #strong-p{
+            margin-top: 1.5em;
+            margin-bottom: 2.5em;
+            font-weight: bold;
+            font-style: italic;
+        }
+    }
+    .contact-info{
+        float:right;
+        width: 30%;
+        margin: 2em;
+    }
+    .title{
+        background-color: $primary-color;
+        width: 60%;
+        height: auto;
+        float: left;
+        #title-text{
+            float: right;
+            margin: 2em 2em 2em 0;
+            h1{
+                margin: 0;
+                font-size: 3em;
+            }
+            #surname{
+                margin: 0;
+                font-weight: normal;
+            }
+            p{
+                color: #232323;
+                margin: 0;
+                font-size: 0.95em;
+                font-style: italic;
+                letter-spacing: 4.5px;
+            }
+        }
+    }
+}
+
+.sidebar{
+
+    position: absolute;
+    margin: 3em 0 0 3em;
+    background-color: $secondary-color;
+    color: white;
+    width: 20em;
+    height: auto;
+    padding: 2em 0 2em 0;
+    .profile-image{
+        width: 80%;
+        height: auto;
+        .face{
+            width: 100%;
+            height: auto;
+        }
+    }
+    h1{
+        margin: 0;
+    }
+    hr{
+        margin: 0;
+        padding: 0;
+        height: 1.5px;
+        background-color: white;
+        border: none;
+    }
+    .education{
+        margin: 3em 3em 0 3em;
+        text-align: justify;
+        .degree{
+            margin: 2em 0 2em 0;
+        }
+        span {
+             display: table-cell;
+        }
+        h5{
+            background-color: $primary-color;
+            color: black;
+            margin: 0 1em 0 0;
+            padding: 1em 0.4em 1em 0.1em;
+            font-size: 0.75em;
+            writing-mode: tb-rl;
+            transform: rotate(-180deg);
+            float: left;
+        }
+        h4{
+            margin: 0;
+        }
+        p {
+            font-size: 0.75em;
+        }
+    }
+    .references{
+        margin: 3em 3em 0 3em;
+        text-align: justify;
+        .contacts{
+            margin: 2em 0 2em 0;
+        }
+        .address{
+            color: $primary-color;
+            font-style: italic;
+            font-weight: bold;
+        }
+        h4{
+            margin: 0;
+        }
+        h5{
+            margin: 0.35em 0 0 0;
+            font-weight: normal;
+        }
+    }
+    .languages{
+        margin: 3em 3em 0 3em;
+        ul {
+            padding: 0;
+            margin: 1.5em 0 0 0;
+
+            li {
+                margin-top: 1em;
+                list-style: none;
+                font-size: 0.6em;
+            }
+
+            li:before {
+                color: $primary-color;
+                content: "·";
+                font-size: 4em;
+                vertical-align: middle;
+                line-height: 0.4em;
+            }
+        }
+        .lang-progress{
+            float: right;
+        }
+        .sd-progress-bar{
+            float: right;
+            margin: 0.45em 0 0 0;
+            width: 47%;
+            background-color: #3d3d3d;
+        }
+        .english{
+            width: 85%;
+            background-color: $primary-color;
+        }
+        .french{
+            width: 60%;
+            background-color: $primary-color;
+        }
+        .spanish{
+            width: 72%;
+            background-color: $primary-color;
+        }
+        .german{
+            width: 55%;
+            background-color: $primary-color;
+        }
+        .arabic{
+            width: 78%;
+            background-color: $primary-color;
+        }
+    }
+}
+.progress{
+    width: 100%;
+    padding: 0.21em 0 0.21em 0;
+}
+.main-info{
+    display: none;
 }
