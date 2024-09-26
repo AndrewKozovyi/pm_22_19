@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import cssnano from 'gulp-cssnano';
 import autoprefixer from 'gulp-autoprefixer';
-import imagemin, {svgo} from 'gulp-imagemin';
+import imagemin from 'gulp-imagemin';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
